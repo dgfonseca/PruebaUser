@@ -131,7 +131,7 @@ STATICFILES_DIRS = (
 
 LOGIN_URL = "/login/auth0"
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "https://chiperchitech.auth0.com/v2/logout?returnTo=http%3A%2F%2F--------:8000"
+LOGOUT_REDIRECT_URL = "https://chiperchitech.auth0.com/v2/logout?returnTo=http%3A%2F%2F54.82.178.242:8000"
 
 
 
