@@ -6,4 +6,5 @@ from . import views
 urlpatterns = [
     url(r'^pedidos/', views.pedidos_list),
     url(r'^pedidocreate/$', csrf_exempt(views.pedido_create), name='pedidocreate'),
+    url(r'^home/', views.home),
 ]

@@ -8,20 +8,26 @@ from django.conf import settings
 import requests
 from .models import Pedido
 import json
+from Camion.models import Camion
+from django.core.serializers import serialize
 
 
 def check_tienda(data):
     r = requests.get(settings.PATH_VAR, headers={"Accept": "application/json"})
     tiendas = r.json()
+    print(tiendas)
     for tienda in tiendas:
-        if data["tienda"] == tienda["nit"]:
+        if data["tienda"] == tienda["id"]:
             return True
     return False
 
 
+def home(request):
+	return render(request,"home.html")
+
 def pedidos_list(request):
     queryset = Pedido.objects.all()
-    context = list(queryset.values('id', 'fechaSolicitud', 'fechaEntrega', 'camion', 'factura', 'tienda'))
+    context = list(queryset.values('id', 'fechaSolicitud', 'fechaEntrega', 'camion', 'tienda'))
     return JsonResponse(context, safe=False)
 
 
@@ -34,8 +40,6 @@ def pedido_create(request):
             pedido.fechaSolicitud = data_json['fechaSolicitud']
             pedido.fechaEntrega = data_json['fechaEntrega']
             pedido.tienda = data_json['tienda']
-            pedido.factura = data_json['factura']
-            pedido.camion = ['camion']
             pedido.save()
             return HttpResponse("Creado correctamente")
         else:

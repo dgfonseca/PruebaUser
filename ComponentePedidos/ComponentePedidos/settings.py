@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'ComponentePedidos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'chitech',
+	'USER': 'chiper',
+	'PASSWORD': 'chiper',
+	'HOST': '52.204.111.135',
+	'PORT':'5432',
     }
 }
 
@@ -132,4 +136,5 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-PATH_VAR = "http://0.0.0.0:8000/pedidos"
+PATH_VAR = "http://54.164.14.233:8000/tiendas"
+PATH_VAR2 = "http://54.164.14.233:8000/camioneros"
